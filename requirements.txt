@@ -1,0 +1,16 @@
+mysql-python
+lxml==2.3.6
+PyQuery
+Pillow
+gunicorn
+
+django==1.8
+django-celery
+django-crispy-forms
+django-reversion
+git+git://github.com/fxiao/DjangoUeditor
+xlwt
+xlsxwriter
+python-memcached
+python-binary-memcached
+django-bmemcached

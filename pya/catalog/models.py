@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
+from django.utils import timezone
 
 
 class Category(models.Model):
@@ -9,9 +10,12 @@ class Category(models.Model):
     image = models.ImageField(u"图片", upload_to="images", blank=True, null=True)
 
     description = models.TextField(u"描述", blank=True, null=True)
-    meta_title = models.CharField(u"Meta Tag 标题", max_length=255)
-    meta_description = models.CharField(u"Meta Tag 描述", max_length=255)
-    meta_keyword = models.CharField(u"Meta Tag 关键字", max_length=255)
+    meta_title = models.CharField(u"Meta Tag 标题",
+                                  max_length=255, blank=True, null=True)
+    meta_description = models.CharField(u"Meta Tag 描述",
+                                        max_length=255, blank=True, null=True)
+    meta_keyword = models.CharField(u"Meta Tag 关键字",
+                                    max_length=255, blank=True, null=True)
 
     top = models.BooleanField(u"导航栏显示", default=True)
     column = models.IntegerField(u"分类列排显示", default=0)
@@ -19,7 +23,7 @@ class Category(models.Model):
     active = models.BooleanField(u"状态", default=True)
 
     date_added = models.DateTimeField(u"添加时间", auto_now_add=True)
-    date_modified = models.DateTimeField(u"修改时间", auto_now=True)
+    date_modified = models.DateTimeField(u"修改时间", default=timezone.now)
 
     class Meta:
         ordering = ("position",)

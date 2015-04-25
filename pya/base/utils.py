@@ -8,7 +8,7 @@ class CacheModel(models.Model):
     # 缓存操作模型
 
     def get_caache_name(self):
-        return self.__name__
+        return "-".join((self.__name__, str(self.pk,))
 
     def save(self, *args, **kwargs):
         super(CacheModel, self).save(*args, **kwargs)
